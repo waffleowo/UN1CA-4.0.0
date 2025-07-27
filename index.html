@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UNICA 4 INTERNAL BETA!</title>
+    <title>unica bomb</title>
     <style>
         body {
             margin: 0;
@@ -21,9 +21,20 @@
         .big-text {
             font-size: 4rem;
             font-weight: bold;
-            color: #E0E0E0;
+            background: linear-gradient(45deg, #FF6B6B, #4ECDC4, #45B7D1, #96CEB4, #FFEAA7);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
             text-align: center;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            animation: gradientShift 3s ease infinite;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
         
         .download-btn {
@@ -39,6 +50,7 @@
             display: inline-block;
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+            position: relative;
         }
         
         .download-btn:hover {
@@ -48,6 +60,19 @@
         
         .download-btn:active {
             transform: translateY(0);
+        }
+        
+        .download-btn.moving {
+            transition: all 0.5s ease;
+        }
+        
+        .copyright {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            color: #888;
+            font-size: 0.9rem;
+            font-style: italic;
         }
         
         @media (max-width: 768px) {
@@ -62,8 +87,70 @@
         UNICA 4 INTERNAL BETA LEAKED FROM SOLVO PC!!!
     </div>
     
-    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="download-btn" target="_blank">
-        Download for SM7325 Devices
+    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="download-btn" target="_blank" id="downloadBtn">
+        📱 Download for SM7325 Devices
     </a>
+    
+    <script>
+        const btn = document.getElementById('downloadBtn');
+        let clickAttempts = 0;
+        
+        btn.addEventListener('mouseenter', function() {
+            clickAttempts++;
+            
+            // Get viewport dimensions
+            const viewportWidth = window.innerWidth;
+            const viewportHeight = window.innerHeight;
+            const btnRect = btn.getBoundingClientRect();
+            
+            // Calculate safe random position (avoiding edges)
+            const margin = 100;
+            const randomX = Math.random() * (viewportWidth - btnRect.width - margin * 2) + margin;
+            const randomY = Math.random() * (viewportHeight - btnRect.height - margin * 2) + margin;
+            
+            // Add moving class for smooth transition
+            btn.classList.add('moving');
+            
+            // Move the button to random position
+            btn.style.position = 'fixed';
+            btn.style.left = randomX + 'px';
+            btn.style.top = randomY + 'px';
+            
+            // Change button text based on attempts
+            if (clickAttempts === 1) {
+                btn.innerHTML = 'nah';
+            } else if (clickAttempts === 2) {
+                btn.innerHTML = 'hell nah';
+            } else if (clickAttempts === 3) {
+                btn.innerHTML = 'nuh uh';
+            } else if (clickAttempts === 5) {
+                btn.innerHTML = 'still nah';
+            } else if (clickAttempts >= 10) {
+                btn.innerHTML = 'tf why u keep trying?';
+            }
+        });
+        
+        // Prevent the actual click
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            return false;
+        });
+        
+        // Reset position occasionally
+        setInterval(() => {
+            if (clickAttempts > 15) {
+                btn.style.position = 'relative';
+                btn.style.left = 'auto';
+                btn.style.top = 'auto';
+                btn.innerHTML = '🔄 Reset! Try again...';
+                clickAttempts = 0;
+                btn.classList.remove('moving');
+            }
+        }, 20000);
+    </script>
+    
+    <div class="copyright">
+        by me waffle dont copy!
+    </div>
 </body>
 </html>
