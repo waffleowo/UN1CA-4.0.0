@@ -15,7 +15,7 @@
             justify-content: center;
             align-items: center;
             font-family: Arial, sans-serif;
-            gap: 40px;
+            gap: 30px;
         }
         
         .big-text {
@@ -29,6 +29,42 @@
             text-align: center;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
             animation: gradientShift 3s ease infinite;
+        }
+        
+        .images-container {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .image-item {
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+        
+        .image-item:hover {
+            transform: scale(1.05);
+        }
+        
+        .person-img {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+        }
+        
+        .cat-img {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+        }
+        
+        .chip-img {
+            width: 150px;
+            height: 120px;
+            object-fit: contain;
         }
         
         @keyframes gradientShift {
@@ -87,8 +123,14 @@
         UNICA 4 INTERNAL BETA LEAKED FROM SOLVO PC!!!
     </div>
     
+    <div class="images-container">
+        <img src="solvo.jpg" alt="solvo class="image-item person-img">
+        <img src="car.jpg" alt="car" class="image-item cat-img">  
+        <img src="778g.png" alt="778G > exynos 1280" class="image-item chip-img">
+    </div>
+    
     <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="download-btn" target="_blank" id="downloadBtn">
-        📱 Download for SM7325 Devices
+        Download for SM7325 Devices
     </a>
     
     <script>
@@ -126,7 +168,7 @@
             } else if (clickAttempts === 5) {
                 btn.innerHTML = 'still nah';
             } else if (clickAttempts >= 10) {
-                btn.innerHTML = 'tf why u keep trying?';
+                btn.innerHTML = 'why u keep trying?';
             }
         });
         
@@ -142,7 +184,7 @@
                 btn.style.position = 'relative';
                 btn.style.left = 'auto';
                 btn.style.top = 'auto';
-                btn.innerHTML = '🔄 Reset! Try again...';
+                btn.innerHTML = 'Reset! Try again...';
                 clickAttempts = 0;
                 btn.classList.remove('moving');
             }
